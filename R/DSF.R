@@ -42,7 +42,7 @@
 #'
 #'    - [update()] to transform the points from a specified `DSD`.
 
-#' It is convenient to use the pipe ([magrittr::%>%]) to apply one or more filters to data
+#' It is convenient to use the pipe (`|>` or [magrittr::%>%]) to apply one or more filters to data
 #' streams (see Examples section).
 #'
 #' @family DSF
@@ -60,7 +60,7 @@
 #' DSF()
 #'
 #' # Example 1: Use as a DSD adapter
-#' stream <- DSD_Gaussians(k = 3, d = 2) %>%
+#' stream <- DSD_Gaussians(k = 3, d = 2) |>
 #'   DSF_Func(func = function(x) cbind(x, Xsum = x$X1 + x$X2))
 #' stream
 #'
@@ -73,15 +73,15 @@
 #' update(trans, stream, n = 5)
 #'
 #' # Example 3: Use as a DST preprocessor
-#' clusterer <- DSF_Func(func = function(x) cbind(x, X1_squared = x$X1^2)) %>%
+#' clusterer <- DSF_Func(func = function(x) cbind(x, X1_squared = x$X1^2)) |>
 #'                DST_Runner(DSC_Kmeans(k = 3))
 #' clusterer
 #'
 #' update(clusterer, stream, n = 100)
 #'
 #' # Example 5: Specify a complete pipeline DSD -> DSF -> DST
-#' pipeline <- DSD_Gaussians(k = 3, d = 2) %>%
-#'                DSF_Func(func = function(x) cbind(x, X1_squared = x$X1^2)) %>%
+#' pipeline <- DSD_Gaussians(k = 3, d = 2) |>
+#'                DSF_Func(func = function(x) cbind(x, X1_squared = x$X1^2)) |>
 #'                DST_Runner(DSC_Kmeans(k = 3))
 #' pipeline
 #'

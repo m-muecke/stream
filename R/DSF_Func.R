@@ -21,7 +21,7 @@
 #' Applies an R function to transform to a data stream.
 #'
 #' The function's first argument needs to be a data.frame representing points of the
-#' data stream. The function will be called as `ps %>% your_function()`, where `ps` is the
+#' data stream. The function will be called as `ps |> your_function()`, where `ps` is the
 #' data.frame with some points obtained using [get_points()] on the data stream source.
 #'
 #' @family DSF
@@ -43,12 +43,12 @@
 #' }
 #'
 #' # By default, the info columns starting with . are not affected.
-#' stream2 <- stream %>% DSF_Func(rename, names = c("A", "B", "C"))
+#' stream2 <- stream |> DSF_Func(rename, names = c("A", "B", "C"))
 #' stream2
 #' get_points(stream2, n = 5)
 #'
 #' ## Example 2: add a sum columns
-#' stream3 <- stream2 %>% DSF_Func(function(x) {
+#' stream3 <- stream2 |> DSF_Func(function(x) {
 #'   x$sum = rowSums(x)
 #'   x
 #' })
@@ -60,14 +60,14 @@
 #' pca_trans <- function(x) predict(pr, x[, c("X1", "X2", "X3")])[, 1:2 , drop = FALSE]
 #' pca_trans(get_points(stream, n = 3, info = FALSE))
 #'
-#' stream4 <- stream %>% DSF_Func(pca_trans)
+#' stream4 <- stream |> DSF_Func(pca_trans)
 #' stream4
 #'
 #' get_points(stream4, n = 3)
 #' plot(stream4)
 #'
 #' ## Example 4: Change a class labels using info = TRUE. We redefine class 3 as noise (NA)
-#' stream5 <- stream %>% DSF_Func(
+#' stream5 <- stream |> DSF_Func(
 #'   function(x) { x[['.class']][x[['.class']] == 3] <- NA; x },
 #'   info = TRUE)
 #' stream5

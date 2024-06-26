@@ -19,13 +19,13 @@
 #' Create a Data Stream Pipeline
 #'
 #' Define a complete data stream pipe line
-#' consisting of a data stream, filters and a data mining task using `%>%`.
+#' consisting of a data stream, filters and a data mining task using [|>].
 #'
 #'
 #' A data stream pipe line
 #' consisting of a data stream, filters and a data mining task:
 #'
-#' ```DSD %>% DSF %>% DST_Runner```
+#' ```DSD |> DSF |> DST_Runner```
 #'
 #' Once the pipeline is defined, it can be run using [update()] where points are
 #' taken from the [DSD] data stream source,
@@ -38,15 +38,16 @@
 #' @name stream_pipeline
 #' @aliases stream_pipeline
 #'
-#' @param dsd A data stream (subclass of [DSD]) typically provided using a `%>%` (pipe).
+#' @param dsd A data stream (subclass of [DSD]) typically provided using a
+#'   [magrittr::%>%] (magrittr pipe) or `|>` (native pipe).
 #' @param dst A data stream mining task (subclass of [DST]).
 #' @author Michael Hahsler
 #' @examples
 #' set.seed(1500)
 #'
 #' # Set up a pipeline with a DSD data source, DSF Filters and then a DST task
-#' cluster_pipeline <- DSD_Gaussians(k = 3, d = 2) %>%
-#'                     DSF_Scale() %>%
+#' cluster_pipeline <- DSD_Gaussians(k = 3, d = 2) |>
+#'                     DSF_Scale() |>
 #'                     DST_Runner(DSC_DBSTREAM(r = .3))
 #'
 #' cluster_pipeline

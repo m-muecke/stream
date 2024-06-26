@@ -33,8 +33,8 @@
 #'
 #' Summary functions can be used, but will only be applied to the requested part of the stream of length `n`.
 #'
-#' `DSF_dplyr()` calls the function using `points %>% <func>` and multiple `dplyr` functions can be applied by
-#' using `%>%` between them.
+#' `DSF_dplyr()` calls the function using `points |> <func>` and multiple `dplyr` functions can be applied by
+#' using `|>` between them.
 #'
 #' @family DSF
 #'
@@ -54,9 +54,9 @@
 #' # 2. filter points by X1 > .5 (Note that the info columns also need to be filtered!)
 #' # 3. Add a sum columns
 #'
-#' stream2 <- stream %>%
-#'   DSF_dplyr(select(X1, X2)) %>%
-#'   DSF_dplyr(filter(X1 > .5), info = TRUE) %>%
+#' stream2 <- stream |>
+#'   DSF_dplyr(select(X1, X2)) |>
+#'   DSF_dplyr(filter(X1 > .5), info = TRUE) |>
 #'   DSF_dplyr(mutate(Xsum = X1 + X2))
 #' stream2
 #'
@@ -79,7 +79,7 @@ DSF_dplyr <-
         func
       ),
       dsd = dsd,
-      func = parse(text = paste('ps <- ps %>%', paste0(func, collapse = ' '))),
+      func = parse(text = paste('ps <- ps |>', paste0(func, collapse = ' '))),
       info = info
     )
     class(l) <-

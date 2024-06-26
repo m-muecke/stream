@@ -40,12 +40,12 @@
 #'
 #' stream <- data.frame(
 #'     presidents,
-#'     .time = time(presidents)) %>%
+#'     .time = time(presidents)) |>
 #'   DSD_Memory()
 #'
 #' plot(stream, dim = 1, n = 120, method = "ts", main = "Original")
 #'
-#' smoothStream <- stream %>% DSF_ExponentialMA(alpha = .7)
+#' smoothStream <- stream |> DSF_ExponentialMA(alpha = .7)
 #' smoothStream
 #'
 #' reset_stream(smoothStream)

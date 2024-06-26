@@ -34,8 +34,8 @@ rows are allowed on streams. Examples are:
 
 Summary functions can be used, but will only be applied to the requested part of the stream of length \code{n}.
 
-\code{DSF_dplyr()} calls the function using \verb{points \%>\% <func>} and multiple \code{dplyr} functions can be applied by
-using \verb{\%>\%} between them.
+\code{DSF_dplyr()} calls the function using \verb{points |> <func>} and multiple \code{dplyr} functions can be applied by
+using \verb{|>} between them.
 }
 \examples{
 \dontshow{if (requireNamespace(dplyr, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
@@ -49,9 +49,9 @@ plot(stream, xlim = c(0, 1), ylim = c(0, 1))
 # 2. filter points by X1 > .5 (Note that the info columns also need to be filtered!)
 # 3. Add a sum columns
 
-stream2 <- stream \%>\%
-  DSF_dplyr(select(X1, X2)) \%>\%
-  DSF_dplyr(filter(X1 > .5), info = TRUE) \%>\%
+stream2 <- stream |>
+  DSF_dplyr(select(X1, X2)) |>
+  DSF_dplyr(filter(X1 > .5), info = TRUE) |>
   DSF_dplyr(mutate(Xsum = X1 + X2))
 stream2
 

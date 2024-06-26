@@ -44,17 +44,17 @@
 #' center <- colMeans(points)
 #' scale <- apply(points, MARGIN = 2, sd)
 #'
-#' scaledStream <- stream %>%  DSF_Scale(dim = c(1L, 2L), center = center, scale = scale)
+#' scaledStream <- stream |>  DSF_Scale(dim = c(1L, 2L), center = center, scale = scale)
 #' colMeans(get_points(scaledStream, n = 100, info = FALSE))
 #' apply(get_points(scaledStream, n = 100, info = FALSE), MARGIN = 2, sd)
 #'
 #' # let DSF_Scale calculate the scaling factors from the first n points of the stream
-#' scaledStream <- stream %>% DSF_Scale(dim = c(1L, 2L), n = 100)
+#' scaledStream <- stream |> DSF_Scale(dim = c(1L, 2L), n = 100)
 #' colMeans(get_points(scaledStream, n = 100, info = FALSE))
 #' apply(get_points(scaledStream, n = 100, info = FALSE), MARGIN = 2, sd)
 #'
 #' ## scale only X2
-#' scaledStream <- stream %>% DSF_Scale(dim = "X2", n = 100)
+#' scaledStream <- stream |> DSF_Scale(dim = "X2", n = 100)
 #' colMeans(get_points(scaledStream, n = 100, info = FALSE))
 #' apply(get_points(scaledStream, n = 100, info = FALSE), MARGIN = 2, sd)
 #' @export

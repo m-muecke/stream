@@ -1,6 +1,6 @@
 set.seed(0)
 stream <-
-  DSD_Gaussians(d = 4, k = 3, noise = 0.05) %>% DSD_Memory(n = 1500)
+  DSD_Gaussians(d = 4, k = 3, noise = 0.05) |> DSD_Memory(n = 1500)
 
 f <- ~ X1 + X3
 

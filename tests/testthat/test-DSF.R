@@ -10,14 +10,14 @@ test_that("DSF_Func with a DSD", {
   skip_if_not_installed("dplyr")
   # DSF with stream
   dsfs <- list(
-    stream1 %>% DSF_Func(func = rename, names = c("x", "y")),
-    stream1 %>% DSF_Convolve(kernel = filter_MA(5), dim = 1),
-    stream1 %>% DSF_Downsample(factor = 1),
-    stream1 %>% DSF_dplyr(
-      func = dplyr::mutate(Xsum = X1 + X2)) %>% DSF_dplyr(func = dplyr::select(!X1)
+    stream1 |> DSF_Func(func = rename, names = c("x", "y")),
+    stream1 |> DSF_Convolve(kernel = filter_MA(5), dim = 1),
+    stream1 |> DSF_Downsample(factor = 1),
+    stream1 |> DSF_dplyr(
+      func = dplyr::mutate(Xsum = X1 + X2)) |> DSF_dplyr(func = dplyr::select(!X1)
     ),
-    stream1 %>% DSF_ExponentialMA(alpha = .7),
-    stream1 %>% DSF_Scale()
+    stream1 |> DSF_ExponentialMA(alpha = .7),
+    stream1 |> DSF_Scale()
   )
 
   for (stream_dsf in dsfs) {
@@ -63,7 +63,7 @@ test_that("DSF_Func without a DSD", {
     DSF_Convolve(kernel = filter_MA(5), dim = 1),
     DSF_Downsample(factor = 1),
     DSF_dplyr(
-      func = dplyr::mutate(Xsum = X1 + X2)) %>% DSF_dplyr(func = dplyr::select(!X1)
+      func = dplyr::mutate(Xsum = X1 + X2)) |> DSF_dplyr(func = dplyr::select(!X1)
     ),
     DSF_ExponentialMA(alpha = .7),
     DSF_Scale(center = center, scale = scale, dim = c("X1", "X2"))

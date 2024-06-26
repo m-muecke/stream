@@ -67,7 +67,7 @@ this implementation also allows to evaluate a fixed number of generations
 after each observation.
 }
 \examples{
-stream <- DSD_Gaussians(k = 3, d = 2) \%>\% DSD_Memory(n = 500)
+stream <- DSD_Gaussians(k = 3, d = 2) |> DSD_Memory(n = 500)
 
 ## init evoStream
 evoStream <- DSC_evoStream(r = 0.05, k = 3,

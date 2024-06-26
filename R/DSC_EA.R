@@ -47,7 +47,7 @@
 #' Carnein M. and Trautmann H. (2018), "evoStream - Evolutionary
 #' Stream Clustering Utilizing Idle Times", Big Data Research.
 #' @examples
-#' stream <- DSD_Gaussians(k = 3, d = 2) %>% DSD_Memory(n = 1000)
+#' stream <- DSD_Gaussians(k = 3, d = 2) |> DSD_Memory(n = 1000)
 #'
 #' ## online algorithm
 #' dbstream <- DSC_DBSTREAM(r = 0.1)

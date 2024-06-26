@@ -1,7 +1,7 @@
 test_that("DSF_Scale", {
-  stream <- DSD_Gaussians(k = 3, d = 2) %>% DSD_Memory(n = 100)
+  stream <- DSD_Gaussians(k = 3, d = 2) |> DSD_Memory(n = 100)
 
-  scaledStream <- stream %>%  DSF_Scale(n = 100)
+  scaledStream <- stream |> DSF_Scale(n = 100)
 
   reset_stream(scaledStream)
   get_points(stream, n = 5)

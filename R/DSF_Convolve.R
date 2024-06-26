@@ -56,14 +56,14 @@
 #'     approval_orig = presidents,
 #'     approval_MA = presidents,
 #'     approval_diff1 = presidents,
-#'     .time = time(presidents)) %>%
+#'     .time = time(presidents)) |>
 #'   DSD_Memory()
 #'
 #' plot(stream, dim = 1, n = 120, method = "ts")
 #'
 #' ## apply a moving average filter to dimension 1 (using the column name) and diff to dimension 3
-#' filteredStream <- stream %>%
-#'   DSF_Convolve(kernel = filter_MA(5), dim = "approval_orig", na.rm = TRUE) %>%
+#' filteredStream <- stream |>
+#'   DSF_Convolve(kernel = filter_MA(5), dim = "approval_orig", na.rm = TRUE) |>
 #'   DSF_Convolve(kernel = filter_diff(1), dim = 3)
 #' filteredStream
 #'
@@ -83,11 +83,11 @@
 #'   length.out = 100))), loop = TRUE)
 #' plot(stream, n = 200, method = "ts")
 #'
-#' filteredStream <- stream %>%
+#' filteredStream <- stream |>
 #'   DSF_Convolve(kernel = filter_MA(100), dim = 1,
-#'     replace = FALSE, name = "MA") %>%
+#'     replace = FALSE, name = "MA") |>
 #'   DSF_Convolve(kernel = filter_MA(100), pre = pow2, post = sqrt, dim = 1,
-#'     replace = FALSE, name = "RMS") %>%
+#'     replace = FALSE, name = "RMS") |>
 #'   DSF_Convolve(kernel = filter_diff(1), dim = 1,
 #'     replace = FALSE, name = "diff1")
 #' filteredStream

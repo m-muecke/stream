@@ -11,7 +11,6 @@
 #'
 #' @import Rcpp
 #' @import proxy
-#' @import magrittr
 #' @importFrom methods is new
 #' @importFrom dbscan dbscan
 #' @importFrom utils head read.table write.table

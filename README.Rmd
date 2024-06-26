@@ -58,7 +58,7 @@ Load the package and a random data stream with 3 Gaussian clusters and 10\% nois
 library("stream")
 set.seed(2000)
 
-stream <- DSD_Gaussians(k = 3, d = 2, noise= .1) %>% DSF_Scale()
+stream <- DSD_Gaussians(k = 3, d = 2, noise= .1) |> DSF_Scale()
 get_points(stream, n = 5)
 
 plot(stream)
@@ -91,8 +91,8 @@ evaluate_static(dso, stream, n = 100, measure = c("numPoints", "noiseActual", "n
 
 Preparing complete stream process pipelines that can be run using a single `update()` call.
 ```{r pipeline}
-pipeline <- DSD_Gaussians(k = 3, d = 2, noise= .1) %>% 
-  DSF_Scale() %>% 
+pipeline <- DSD_Gaussians(k = 3, d = 2, noise= .1) |>
+  DSF_Scale() |>
   DST_Runner(DSC_DStream(gridsize = .1))
 pipeline
 

@@ -8,19 +8,20 @@
 DST_Runner(dsd, dst)
 }
 \arguments{
-\item{dsd}{A data stream (subclass of \link{DSD}) typically provided using a \verb{\%>\%} (pipe).}
+\item{dsd}{A data stream (subclass of \link{DSD}) typically provided using a
+\link[magrittr:pipe]{magrittr::\%>\%} (magrittr pipe) or \verb{|>} (native pipe).}
 
 \item{dst}{A data stream mining task (subclass of \link{DST}).}
 }
 \description{
 Define a complete data stream pipe line
-consisting of a data stream, filters and a data mining task using \verb{\%>\%}.
+consisting of a data stream, filters and a data mining task using \link{|>}.
 }
 \details{
 A data stream pipe line
 consisting of a data stream, filters and a data mining task:
 
-\code{DSD \%>\% DSF \%>\% DST_Runner}
+\verb{DSD |> DSF |> DST_Runner}
 
 Once the pipeline is defined, it can be run using \code{\link[=update]{update()}} where points are
 taken from the \link{DSD} data stream source,
@@ -33,8 +34,8 @@ the \link{DST} task.
 set.seed(1500)
 
 # Set up a pipeline with a DSD data source, DSF Filters and then a DST task
-cluster_pipeline <- DSD_Gaussians(k = 3, d = 2) \%>\%
-                    DSF_Scale() \%>\%
+cluster_pipeline <- DSD_Gaussians(k = 3, d = 2) |>
+                    DSF_Scale() |>
                     DST_Runner(DSC_DBSTREAM(r = .3))
 
 cluster_pipeline

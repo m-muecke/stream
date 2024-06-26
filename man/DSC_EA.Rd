@@ -44,7 +44,7 @@ allows to improve existing macro-clusters instead of recomputing them every
 time.
 }
 \examples{
-stream <- DSD_Gaussians(k = 3, d = 2) \%>\% DSD_Memory(n = 1000)
+stream <- DSD_Gaussians(k = 3, d = 2) |> DSD_Memory(n = 1000)
 
 ## online algorithm
 dbstream <- DSC_DBSTREAM(r = 0.1)

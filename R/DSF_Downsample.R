@@ -28,7 +28,7 @@
 #' @author Michael Hahsler
 #' @examples
 #' # Simple downsampling example
-#' stream <- DSD_Memory(data.frame(rownum = seq(100))) %>% DSF_Downsample(factor = 10)
+#' stream <- DSD_Memory(data.frame(rownum = seq(100))) |> DSF_Downsample(factor = 10)
 #' stream
 #'
 #' get_points(stream, n = 2)
@@ -43,13 +43,13 @@
 #'
 #' stream <- data.frame(
 #'     presidents,
-#'     .time = time(presidents)) %>%
+#'     .time = time(presidents)) |>
 #'   DSD_Memory()
 #'
 #' plot(stream, dim = 1, n = 120, method = "ts")
 #'
 #' # downsample by taking only every 3rd data point (quarters)
-#' downsampledStream <- stream %>% DSF_Downsample(factor = 3)
+#' downsampledStream <- stream |> DSF_Downsample(factor = 3)
 #'
 #' reset_stream(downsampledStream)
 #' plot(downsampledStream, dim = 1, n = 40, method = "ts")
